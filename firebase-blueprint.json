@@ -1,0 +1,54 @@
+{
+  "entities": {
+    "Transaction": {
+      "title": "Transaction",
+      "description": "Represents a monetary transaction evaluation.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The UID of the user who owns the transaction."
+        },
+        "amount": {
+          "type": "number",
+          "description": "The transaction amount in USD."
+        },
+        "merchant": {
+          "type": "string",
+          "description": "The merchant where the transaction occurred."
+        },
+        "riskScore": {
+          "type": "number",
+          "description": "The calculated risk score (0-100)."
+        },
+        "status": {
+          "type": "string",
+          "description": "The risk level (Low Risk, Medium Risk, High Risk)."
+        },
+        "flags": {
+          "type": "array",
+          "description": "List of risk factors detected."
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The server-side timestamp of creation."
+        }
+      },
+      "required": [
+        "userId",
+        "amount",
+        "merchant",
+        "riskScore",
+        "status",
+        "timestamp"
+      ]
+    }
+  },
+  "firestore": {
+    "transactions": {
+      "schema": "Transaction",
+      "description": "Collection of transaction risk evaluations."
+    }
+  }
+}
